@@ -1,10 +1,24 @@
 from django.db import models
 
 
+
+class Category(models.Model):
+    name = models.CharField(max_length=100)
+
+    class Meta:
+        verbose_name = 'Категория'
+        verbose_name_plural = 'Категории'
+
+    def __str__(self):
+        return self.name
+
+
 class Product(models.Model):
     name = models.CharField(max_length=200,verbose_name = 'Название продукта')
     body = models.TextField(max_length=1500, verbose_name = 'Описание продукта')
     price = models.PositiveIntegerField()
+
+    tags = models.ManyToManyField(Category,related_name = 'product', verbose_name = 'Категории')
   
 
     class Meta:

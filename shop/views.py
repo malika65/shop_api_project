@@ -3,12 +3,33 @@ from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
 
 from rest_framework.generics import CreateAPIView,ListAPIView,RetrieveAPIView,DestroyAPIView
 
-from .serializers import ProductListSerializer, ProductDetailSerializer, ShopListSerializer, ShopDetailSerializer
+from .serializers import (
+    CategoryListSerializer,
+    ProductListSerializer, 
+    ProductDetailSerializer, 
+    ShopListSerializer, 
+    ShopDetailSerializer,
+    CategoryDetailSerializer
+)
 
-from .models import Product, Shop
+from .models import Product, Shop, Category
 
 def index(request):
     return HttpResponse("Hello world")  
+
+
+class CategoryListView(ListAPIView):
+    serializer_class = CategoryListSerializer
+    queryset = Category.objects.all()
+
+
+class CategoryDetailView(RetrieveAPIView):
+    serializer_class = CategoryDetailSerializer
+    queryset = Category.objects.all()
+    lookup_field = 'pk' # id
+    lookup_url_kwarg = 'category_id'
+   
+
 
 class ProductListView(ListAPIView):
     serializer_class = ProductListSerializer
