@@ -27,10 +27,11 @@ class ProductDetailSerializer(serializers.ModelSerializer):
 
 
 class ProductListSerializer(serializers.ModelSerializer):
+    product_image = ProductImageSerializer(source='images', many=True)
 
     class Meta:
         model = Product
-        fields = ('id', 'name')
+        fields = ('id', 'name', 'product_image')
 
 
 class CategoryDetailSerializer(serializers.ModelSerializer):
