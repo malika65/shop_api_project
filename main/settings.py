@@ -31,6 +31,8 @@ ALLOWED_HOSTS = ["*"]
 
 CSRF_TRUSTED_ORIGINS = ['https://shop-api-project.herokuapp.com']
 
+CORS_ALLOWED_ORIGINS = [*]
+
 # Application definition
 
 INSTALLED_APPS = [
