@@ -10,8 +10,17 @@ class ProductImageSerializer(serializers.ModelSerializer):
         model = ProductImage
         fields = ('id', 'product_image_url')
 
-class CategoryListSerializer(serializers.ModelSerializer):
 
+class ProductListSerializer(serializers.ModelSerializer):
+    product_image = ProductImageSerializer(source='images', many=True)
+
+    class Meta:
+        model = Product
+        fields = ('id', 'name', 'product_image')
+
+
+class CategoryListSerializer(serializers.ModelSerializer):
+    product_list = ProductListSerializer(source='product', many=True) 
     class Meta:
         model = Category
         fields = '__all__' 
@@ -25,13 +34,6 @@ class ProductDetailSerializer(serializers.ModelSerializer):
         model = Product
         fields = "__all__"
 
-
-class ProductListSerializer(serializers.ModelSerializer):
-    product_image = ProductImageSerializer(source='images', many=True)
-
-    class Meta:
-        model = Product
-        fields = ('id', 'name', 'product_image')
 
 
 class CategoryDetailSerializer(serializers.ModelSerializer):
