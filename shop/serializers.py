@@ -19,8 +19,16 @@ class ProductListSerializer(serializers.ModelSerializer):
         fields = ('id', 'name', 'product_image')
 
 
+class ProductListImageOnlySerializer(serializers.ModelSerializer):
+    product_image = ProductImageSerializer(source='images', many=True)
+
+    class Meta:
+        model = Product
+        fields = ('product_image',)
+
+
 class CategoryListSerializer(serializers.ModelSerializer):
-    product_list = ProductListSerializer(source='product', many=True) 
+    product_list = ProductListImageOnlySerializer(source='product', many=True) 
     class Meta:
         model = Category
         fields = '__all__' 
