@@ -33,6 +33,8 @@ CSRF_TRUSTED_ORIGINS = ['https://shop-api-project.herokuapp.com']
 
 CORS_ALLOWED_ORIGINS = ["*"]
 
+CORS_ORIGIN_ALLOW_ALL=True
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -43,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'whitenoise.runserver_nostatic',
+    'corsheaders',
     'rest_framework',
     'shop',
 
@@ -57,6 +60,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 
 ]
 
