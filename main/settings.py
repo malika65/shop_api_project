@@ -29,10 +29,15 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
-CSRF_TRUSTED_ORIGINS = ['https://shop-api-project.herokuapp.com']
-
 
 CORS_ORIGIN_ALLOW_ALL=True
+
+CORS_ALLOW_CREDENTIALS = True
+
+
+CORS_ALLOWED_ORIGINS = [
+    "http://127.0.0.1:3000",
+]
 
 # Application definition
 
