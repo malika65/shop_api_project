@@ -31,7 +31,7 @@ class Product(models.Model):
 
 class ProductImage(models.Model):
     product = models.ForeignKey(Product, default=None, on_delete=models.CASCADE,related_name='images')
-    images = models.FileField(upload_to = 'images/')
+    images = models.FileField(upload_to = '')
 
     class Meta:
         verbose_name = 'Изображение'
@@ -60,7 +60,7 @@ class Shop(models.Model):
 
 class ShopImage(models.Model):
     shop = models.ForeignKey(Shop, default=None, on_delete=models.CASCADE,related_name='images')
-    images = models.FileField(upload_to = 'images/')
+    images = models.FileField(upload_to = '')
 
     class Meta:
         verbose_name = 'Изображение магазина'
