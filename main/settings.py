@@ -40,7 +40,8 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 CSRF_COOKIE_SECURE=False
-CSRF_TRUSTED_ORIGINS = ['https://shop-api-project.herokuapp.com/']
+
+CSRF_TRUSTED_ORIGINS = ['https://shop-api-project.herokuapp.com']
 
 # Application definition
 
