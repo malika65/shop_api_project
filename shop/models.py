@@ -17,7 +17,7 @@ class Product(models.Model):
     name = models.CharField(max_length=200,verbose_name = 'Название продукта')
     body = models.TextField(max_length=1500, verbose_name = 'Описание продукта')
     price = models.PositiveIntegerField()
-
+    active = models.BooleanField(default=False)
     tags = models.ManyToManyField(Category,related_name = 'product', verbose_name = 'Категории')
   
 
